@@ -24,35 +24,57 @@ printf("STUDENT CONTROL PROGRAM\n\nThis program will:\n1. Create space for an ar
 
 //take user input and calloc an array of that size
 scanf("%d", &numStudents);
-//flush_stdin();
+flush_stdin();
 
 printf("You entered: %d\n", numStudents);
 
 //as long as user input is not 0...
-if(numStudents == 0){
+if(numStudents == 0)
+{
 	return 0;
 }
 
 studArray = (int*)calloc(numStudents, sizeof(int));
 
-for(i = 0; i < numStudents; i++){
-	//do stuff
+for(i = 0; i < numStudents; i++)
+{
+	//create a student
+	//struct student student;
+	
+	//ask user for the name
+	printf("Enter student name:\n");
+
+	//read student name
+	//set student.name to name
+
+	//ask user for the ID
+	printf("Enter student ID number:\n");
+	
+	//read student ID
+	//set student.idNum to ID
+
+	//ask user for grade
+	printf("Enter student letter grade:\n");
+	
+	//read grade, make sure to recognize capital or lowercase
+	//set student.grade to grade
+	//increment the count for that particular grade
 }
 
-//for the number students...
-//create a student struct
-//print "enter student id:"
-//take a string(?) as ID and set 
-//print "enter student last name:"
-//take another string and set
-//print "enter the student grade:"
-//take another string/char and set
-//repeat for as many students as needed
+//user finished inputting student data, so print all information
+printf("STUDENT INFORMATION\n");
 
-//when finished the loop, print all information
-//student id, student name, student grade...
-//number of as, bs, c, d, f
-//print "enter the new array size or 0 if you want to exit
+//do i need a new integer here?
+for(i = 0; i < numStudents; i++)
+{
+	//the current student = studArray[i]
+	//printf("ID: %d\nName: %s\nGrade: %c\n", currentStud.idNum, currentStud.name, currentStud.grade);
+}
+
+//print number of each grade
+
+
+printf("Enter the new array size or 0 if you want to exit:\n");
 
 return 0;
 } 
