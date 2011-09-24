@@ -9,6 +9,7 @@ TODO: 1. create space in memory for an array of n students
 //include statments
 #include <stdio.h>
 #include <stdlib.h>
+#include "student.h"
 
 //main method
 int main(void){
