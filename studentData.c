@@ -23,7 +23,7 @@ int i;
 printf("STUDENT CONTROL PROGRAM\n\nThis program will:\n1. Create space for an array of n students\n2. Fill the aray with user-provided student information\n3. Print all student information on the screen\n4. Count the number of As, Bs, Cs, Ds, and Fs\n5. Release the array space\n\nEnter the array size or 0 if you want to exit:\n");
 
 //take user input and calloc an array of that size
-scanf("%d\n", &numStudents);
+scanf("%d", &numStudents);
 //flush_stdin();
 
 printf("You entered: %d\n", numStudents);
