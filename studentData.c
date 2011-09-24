@@ -11,6 +11,13 @@ TODO: 1. create space in memory for an array of n students
 #include <stdlib.h>
 #include "student.h"
 
+//global variables, keep track of each grade
+int numA = 0;
+int numB = 0;
+int numC = 0;
+int numD = 0;
+int numF = 0;
+
 //main method
 int main(void){
 
@@ -59,7 +66,7 @@ for(i = 0; i < numStudents; i++)
 	
 	//read grade, make sure to recognize capital or lowercase
 	//set student.grade to grade
-	//increment the count for that particular grade
+	//incrementGrade(grade);
 }
 
 //user finished inputting student data, so print all information
@@ -74,6 +81,7 @@ for(i = 0; i < numStudents; i++)
 
 //print number of each grade
 
+//clear grade count and deallocate array before starting over
 
 printf("Enter the new array size or 0 if you want to exit:\n");
 
@@ -85,5 +93,34 @@ void flush_stdin() {
 	char c;
 	
 	while((c = getchar()) != '\n');
+}
+
+void incrementGrade(char c)
+{
+	switch (c)
+	{
+		case 'A':
+			numA++;	
+		case 'a':
+			numA++;
+		case 'B':
+			numB++;
+		case 'b':
+			numB++;
+		case 'C':
+			numC++;
+		case 'c':
+			numC++;
+		case 'D':
+			numD++;
+		case 'd':
+			numD++;
+		case 'F':
+			numF++;
+		case 'f':
+			numF++;
+		default:
+			return;
+	}	
 }
 

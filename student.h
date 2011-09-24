@@ -2,6 +2,7 @@
 
 //function prototypes
 void flush_stdin();
+void incrementGrade(char c);
 
 //student struct
 struct student {
