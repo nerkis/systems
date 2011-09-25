@@ -1,5 +1,6 @@
-/*studentData is a program that allows a user to enter and manipulate information about students (last name, ID number, letter grade)
-*/
+/*studentData is a program that allows a user to enter and manipulate
+ * information about students (last name, ID number, letter grade)
+ */
 
 //include statments
 #include <stdio.h>
@@ -35,7 +36,7 @@ while (numStudents != 0)
 		return 0;
 	}
 
-	//allocate space for an array of student strucs
+	//allocate space for an array of student structs
 	s = (struct student*)calloc(numStudents, sizeof(struct student));
 
 	createStudents(s, numStudents);
@@ -67,17 +68,14 @@ void flush_stdin() {
 void createStudents(struct student *s, int num)
 {
 	int i, id; 
-	char grade;
-	char name[16];
+	char grade;	
 
 	for(i = 0; i < num; i++)
 	{	
 		//ask user for the name
 		printf("Enter student last name (first 16 characters):\n");
-		
-		//read student name
-		scanf("%c", name);
-		s->name = name;	
+	
+		scanf("%s", s->name);	
 
 		//ask user for the ID
 		printf("Enter student ID number:\n");
