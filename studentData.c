@@ -4,7 +4,8 @@ TODO: 1. create space in memory for an array of n students
       2. fill the array with user-provided student information
       3. print the student information on the screen
       4. count the number of each letter grade and print totals
-      5. release the array space when finished*/
+      5. release the array space when finished
+*/
 
 //include statments
 #include <stdio.h>
@@ -18,23 +19,18 @@ int numC = 0;
 int numD = 0;
 int numF = 0;
 
-//main method
+
 int main(void){
 
-//vars
-int *studArray;
 int numStudents;
+struct student *s;
 
-//use in for loop
-int i;
 
-printf("STUDENT CONTROL PROGRAM\n\nThis program will:\n1. Create space for an array of n students\n2. Fill the aray with user-provided student information\n3. Print all student information on the screen\n4. Count the number of As, Bs, Cs, Ds, and Fs\n5. Release the array space\n\nEnter the array size or 0 if you want to exit:\n");
+printf("STUDENT CONTROL PROGRAM\n\nThis program will:\n1. Create space for an array of n students\n2. Fill the array with user-provided student information\n3. Print all student information on the screen\n4. Count the number of As, Bs, Cs, Ds, and Fs\n5. Release the array space\n\nEnter the array size or 0 if you want to exit:\n");
 
 //take user input and calloc an array of that size
 scanf("%d", &numStudents);
 flush_stdin();
-
-printf("You entered: %d\n", numStudents);
 
 //as long as user input is not 0...
 if(numStudents == 0)
@@ -42,48 +38,19 @@ if(numStudents == 0)
 	return 0;
 }
 
-studArray = (int*)calloc(numStudents, sizeof(int));
+s = (struct student*)calloc(numStudents, sizeof(struct student));
 
-for(i = 0; i < numStudents; i++)
-{
-	//create a student
-	//struct student student;
-	
-	//ask user for the name
-	printf("Enter student name:\n");
-
-	//read student name
-	//set student.name to name
-
-	//ask user for the ID
-	printf("Enter student ID number:\n");
-	
-	//read student ID
-	//set student.idNum to ID
-
-	//ask user for grade
-	printf("Enter student letter grade:\n");
-	
-	//read grade, make sure to recognize capital or lowercase
-	//set student.grade to grade
-	//incrementGrade(grade);
-}
+createStudents(s, numStudents);
 
 //user finished inputting student data, so print all information
-printf("STUDENT INFORMATION\n");
+printStudInfo(s, numStudents);
 
-//do i need a new integer here?
-for(i = 0; i < numStudents; i++)
-{
-	//the current student = studArray[i]
-	//printf("ID: %d\nName: %s\nGrade: %c\n", currentStud.idNum, currentStud.name, currentStud.grade);
-}
+printGrades();
 
-//print number of each grade
+//clear grade count
+//free(studArray);
 
-//clear grade count and deallocate array before starting over
-
-printf("Enter the new array size or 0 if you want to exit:\n");
+//START OVER, DON'T DO THIS HERE
 
 return 0;
 } 
@@ -95,32 +62,94 @@ void flush_stdin() {
 	while((c = getchar()) != '\n');
 }
 
+void createStudents(struct student *s, int num)
+{
+	int i, id; 
+	char grade;
+
+	for(i = 0; i < num; i++)
+	{	
+		//ask user for the name
+		printf("Enter student name (first 16 characters):\n");
+		
+		//read student name
+		//s.name = 	
+
+		//ask user for the ID
+		printf("Enter student ID number:\n");
+	
+		scanf("%d", &id);
+		flush_stdin();
+		//s.idNum = id;
+
+		//ask user for grade
+		printf("Enter student letter grade (A, B, C, D, or F):\n");
+	
+		scanf("%c", &grade);	
+		//s.grade = grade;	
+		incrementGrade(grade);
+	
+		//move to next struct in the array
+		s++;
+	}
+}
+
 void incrementGrade(char c)
 {
 	switch (c)
 	{
 		case 'A':
-			numA++;	
+			numA++;
+			break;	
 		case 'a':
 			numA++;
+			break;	
 		case 'B':
 			numB++;
+			break;	
 		case 'b':
 			numB++;
+			break;	
 		case 'C':
 			numC++;
+			break;	
 		case 'c':
 			numC++;
+			break;	
 		case 'D':
 			numD++;
+			break;	
 		case 'd':
 			numD++;
+			break;	
 		case 'F':
 			numF++;
+			break;	
 		case 'f':
 			numF++;
+			break;	
 		default:
-			return;
+			printf("Invalid grade entered.");
+			break;
 	}	
+}
+
+void printStudInfo(struct student *s, int num)
+{
+	//use in for loop
+	int i;
+	
+	printf("STUDENT INFORMATION\n");
+
+	for(i = 0; i < num; i++)
+	{	
+		//printf("ID: %d\nName: %s\nGrade: %c\n", s.idNum, s.name, s.grade);
+		s++;
+	}
+}
+
+void printGrades(woid)
+{
+	printf("Number of As: %d\nNumber of Bs: %d\nNumber of Cs: %d\nNumber of Ds: %d\nNumber of Fs: %d\n", numA, numB, numC, numD, numF);
 }
 
