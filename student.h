@@ -13,3 +13,4 @@ void incrementGrade(char c);
 void printGrades();
 void createStudents(struct student *s, int i);
 void printStudInfo(struct student *s, int i);
+void resetGrades();

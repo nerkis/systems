@@ -22,46 +22,54 @@ int numF = 0;
 
 int main(void){
 
-int numStudents;
+int numStudents = 1;
 struct student *s;
 
+printf("STUDENT CONTROL PROGRAM\n\nThis program will:\n1. Create space for an array of n students\n2. Fill the array with user-provided student information\n3. Print all student information on the screen\n4. Count the number of As, Bs, Cs, Ds, and Fs\n5. Release the array space\n");
 
-printf("STUDENT CONTROL PROGRAM\n\nThis program will:\n1. Create space for an array of n students\n2. Fill the array with user-provided student information\n3. Print all student information on the screen\n4. Count the number of As, Bs, Cs, Ds, and Fs\n5. Release the array space\n\nEnter the array size or 0 if you want to exit:\n");
-
-//take user input and calloc an array of that size
-scanf("%d", &numStudents);
-flush_stdin();
-
-//as long as user input is not 0...
-if(numStudents == 0)
+while (numStudents != 0)
 {
-	return 0;
+	printf("\nEnter the array size or 0 if you want to exit:\n");
+
+	//scan in number of students
+	scanf("%d", &numStudents);
+	flush_stdin();
+
+	//continue as long as user input is not 0
+	if(numStudents == 0)
+	{
+		return 0;
+	}
+
+	//allocate space for an array of student strucs
+	s = (struct student*)calloc(numStudents, sizeof(struct student));
+
+	createStudents(s, numStudents);
+	printStudInfo(s, numStudents);
+	printGrades();
+
+	//clears array from memory
+	free(s);
+
+	//clear values of grade counters
+	resetGrades();	
 }
-
-s = (struct student*)calloc(numStudents, sizeof(struct student));
-
-createStudents(s, numStudents);
-
-//user finished inputting student data, so print all information
-printStudInfo(s, numStudents);
-
-printGrades();
-
-//clear grade count
-//free(studArray);
-
-//START OVER, DON'T DO THIS HERE
 
 return 0;
 } 
 
-//additional functions
+
 void flush_stdin() {
 	char c;
 	
 	while((c = getchar()) != '\n');
 }
 
+/* for each student, createStudents asks the user 
+ * to type in student information. It next reads in
+ * the information and sets the values of struct 
+ * variables
+ */
 void createStudents(struct student *s, int num)
 {
 	int i, id; 
@@ -94,6 +102,7 @@ void createStudents(struct student *s, int num)
 	}
 }
 
+// increments the counter for the grade entered
 void incrementGrade(char c)
 {
 	switch (c)
@@ -134,6 +143,7 @@ void incrementGrade(char c)
 	}	
 }
 
+//prints out information for all students
 void printStudInfo(struct student *s, int num)
 {
 	//use in for loop
@@ -148,8 +158,19 @@ void printStudInfo(struct student *s, int num)
 	}
 }
 
-void printGrades(woid)
+//prints out the total number of each grade assigned
+void printGrades()
 {
 	printf("Number of As: %d\nNumber of Bs: %d\nNumber of Cs: %d\nNumber of Ds: %d\nNumber of Fs: %d\n", numA, numB, numC, numD, numF);
+}
+
+//resets all grade counters to 0
+void resetGrades()
+{
+	numA = 0;
+	numB = 0;
+	numC = 0;
+	numD = 0;
+	numF = 0;
 }
 
