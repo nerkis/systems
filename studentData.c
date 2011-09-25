@@ -5,7 +5,7 @@
 //include statments
 #include <stdio.h>
 #include <stdlib.h>
-#include "student.h"
+#include "studentData.h"
 
 //global variables, keep track of each grade
 int numA = 0;
