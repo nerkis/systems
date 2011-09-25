@@ -1,10 +1,4 @@
 /*studentData is a program that allows a user to enter and manipulate information about students (last name, ID number, letter grade)
-
-TODO: 1. create space in memory for an array of n students
-      2. fill the array with user-provided student information
-      3. print the student information on the screen
-      4. count the number of each letter grade and print totals
-      5. release the array space when finished
 */
 
 //include statments
@@ -74,27 +68,30 @@ void createStudents(struct student *s, int num)
 {
 	int i, id; 
 	char grade;
+	char name[16];
 
 	for(i = 0; i < num; i++)
 	{	
 		//ask user for the name
-		printf("Enter student name (first 16 characters):\n");
+		printf("Enter student last name (first 16 characters):\n");
 		
 		//read student name
-		//s.name = 	
+		scanf("%c", name);
+		s->name = name;	
 
 		//ask user for the ID
 		printf("Enter student ID number:\n");
 	
 		scanf("%d", &id);
 		flush_stdin();
-		//s.idNum = id;
+		s->idNum = id;
 
 		//ask user for grade
 		printf("Enter student letter grade (A, B, C, D, or F):\n");
 	
 		scanf("%c", &grade);	
-		//s.grade = grade;	
+		s->grade = grade;	
+		
 		incrementGrade(grade);
 	
 		//move to next struct in the array
@@ -149,11 +146,14 @@ void printStudInfo(struct student *s, int num)
 	//use in for loop
 	int i;
 	
-	printf("STUDENT INFORMATION\n");
+	printf("\nSTUDENT INFORMATION\n");
 
 	for(i = 0; i < num; i++)
 	{	
-		//printf("ID: %d\nName: %s\nGrade: %c\n", s.idNum, s.name, s.grade);
+		printf("\nID: %d\n", s->idNum);
+		printf("Name: %s\n", s->name);
+		printf("Grade: %c\n", s->grade);
+
 		s++;
 	}
 }
@@ -161,7 +161,7 @@ void printStudInfo(struct student *s, int num)
 //prints out the total number of each grade assigned
 void printGrades()
 {
-	printf("Number of As: %d\nNumber of Bs: %d\nNumber of Cs: %d\nNumber of Ds: %d\nNumber of Fs: %d\n", numA, numB, numC, numD, numF);
+	printf("\nNumber of As: %d\nNumber of Bs: %d\nNumber of Cs: %d\nNumber of Ds: %d\nNumber of Fs: %d\n", numA, numB, numC, numD, numF);
 }
 
 //resets all grade counters to 0

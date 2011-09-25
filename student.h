@@ -2,7 +2,7 @@
 
 //student struct
 struct student {
-	char name[16];
+	char name [16];
 	int idNum;
 	char grade;
 };
