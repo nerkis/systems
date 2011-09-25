@@ -30,12 +30,6 @@ while (numStudents != 0)
 	scanf("%d", &numStudents);
 	flush_stdin();
 
-	//continue as long as user input is not 0
-	if(numStudents == 0)
-	{
-		return 0;
-	}
-
 	//allocate space for an array of student structs
 	s = (struct student*)calloc(numStudents, sizeof(struct student));
 
